@@ -4,8 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -15,13 +16,30 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const formRef = useRef(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: "Mensaje enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+
+    // Envía los datos con EmailJS
+    try {
+      await emailjs.sendForm(
+        "service_contact",      // Service ID
+        "template_ubs4nal",     // Template ID
+        formRef.current,        // Referencia al formulario
+        "vv1HI0tknUQKlg3we"     // Public Key
+      );
+      toast({
+        title: "Mensaje enviado",
+        description: "Nos pondremos en contacto contigo pronto.",
+      });
+      setFormData({ name: "", email: "", message: "" }); // Vacía el formulario
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "No se pudo enviar el mensaje. Intenta de nuevo.",
+      });
+    }
   };
 
   return (
@@ -35,22 +53,22 @@ const Contact = () => {
             Cuéntanos sobre tu proyecto y te responderemos en menos de 24 horas
           </p>
         </div>
-
         <Separator className="mb-16 max-w-3xl mx-auto" />
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <Card className="bg-card/50 backdrop-blur-sm border-border/50">
             <CardHeader>
               <CardTitle>Envíanos un mensaje</CardTitle>
             </CardHeader>
             <CardContent className="p-8 pt-0">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Formulario actualizado con ref y atributos name */}
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Nombre
                   </label>
                   <Input
                     id="name"
+                    name="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
@@ -64,6 +82,7 @@ const Contact = () => {
                   <Input
                     id="email"
                     type="email"
+                    name="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -76,14 +95,15 @@ const Contact = () => {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
                     className="min-h-[150px] bg-background/50"
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90"
                   size="lg"
                 >
@@ -92,7 +112,6 @@ const Contact = () => {
               </form>
             </CardContent>
           </Card>
-
           <div className="space-y-6">
             <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors">
               <CardHeader>
@@ -105,12 +124,11 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">contacto@tecno-biobio.com</p>
+                    <p className="text-muted-foreground">rpsolutionsbiobiospa@gmail.com</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
             <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors">
               <CardContent className="p-6 flex items-start gap-4">
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary to-secondary p-2.5 flex-shrink-0">
@@ -122,7 +140,6 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-
             <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors">
               <CardContent className="p-6 flex items-start gap-4">
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary to-secondary p-2.5 flex-shrink-0">
