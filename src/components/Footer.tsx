@@ -1,4 +1,5 @@
 import { Code2, Linkedin, Github, Twitter } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <Code2 className="h-6 w-6 text-primary" />
               <span className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                TechSolutions
+                RP Solutions  Biobio
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -58,8 +59,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} TechSolutions. Todos los derechos reservados.</p>
+        <Separator className="my-8" />
+
+        <div className="text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} Tecno Bio-Bio. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

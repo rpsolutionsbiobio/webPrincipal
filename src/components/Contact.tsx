@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -35,9 +36,14 @@ const Contact = () => {
           </p>
         </div>
 
+        <Separator className="mb-16 max-w-3xl mx-auto" />
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-            <CardContent className="p-8">
+            <CardHeader>
+              <CardTitle>Envíanos un mensaje</CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 pt-0">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -89,13 +95,18 @@ const Contact = () => {
 
           <div className="space-y-6">
             <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors">
-              <CardContent className="p-6 flex items-start gap-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary to-secondary p-2.5 flex-shrink-0">
-                  <Mail className="h-full w-full text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-muted-foreground">contacto@techsolutions.com</p>
+              <CardHeader>
+                <CardTitle className="text-lg">Información de Contacto</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 pt-0">
+                <div className="flex items-start gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary to-secondary p-2.5 flex-shrink-0">
+                    <Mail className="h-full w-full text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">Email</h3>
+                    <p className="text-muted-foreground">contacto@tecno-biobio.com</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -119,7 +130,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Oficina</h3>
-                  <p className="text-muted-foreground">Madrid, España</p>
+                  <p className="text-muted-foreground">Concepcion, Chile</p>
                 </div>
               </CardContent>
             </Card>

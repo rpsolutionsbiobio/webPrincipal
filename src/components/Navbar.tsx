@@ -20,7 +20,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Code2 className="h-8 w-8 text-primary" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              TechSolutions
+              RP Solutions  Biobio
             </span>
           </div>
 
@@ -31,6 +31,9 @@ const Navbar = () => {
             </button>
             <button onClick={() => scrollToSection('servicios')} className="text-foreground/80 hover:text-primary transition-colors">
               Servicios
+            </button>
+            <button onClick={() => scrollToSection('portafolio')} className="text-foreground/80 hover:text-primary transition-colors">
+              Portafolio
             </button>
             <button onClick={() => scrollToSection('tecnologias')} className="text-foreground/80 hover:text-primary transition-colors">
               Tecnologías
@@ -60,6 +63,9 @@ const Navbar = () => {
             </button>
             <button onClick={() => scrollToSection('servicios')} className="block w-full text-left px-4 py-2 text-foreground/80 hover:text-primary transition-colors">
               Servicios
+            </button>
+            <button onClick={() => scrollToSection('portafolio')} className="block w-full text-left px-4 py-2 text-foreground/80 hover:text-primary transition-colors">
+              Portafolio
             </button>
             <button onClick={() => scrollToSection('tecnologias')} className="block w-full text-left px-4 py-2 text-foreground/80 hover:text-primary transition-colors">
               Tecnologías

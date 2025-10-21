@@ -1,7 +1,10 @@
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
 const technologies = [
-  "React", "TypeScript", "Node.js", "Python", "Next.js",
-  "PostgreSQL", "MongoDB", "AWS", "Docker", "Kubernetes",
-  "TailwindCSS", "GraphQL", "React Native", "Vue.js", "Express"
+  "React", "TypeScript", "Node.js", "Python", "Next.js", "Flutter",
+  "Kotlin","PostgreSQL", "MongoDB", "AWS", "Docker", "Kubernetes",
+  "TailwindCSS", "GraphQL", "React Native", "Vue.js", "Express", "Y mucho mas"
 ];
 
 const Technologies = () => {
@@ -19,16 +22,19 @@ const Technologies = () => {
 
         <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
           {technologies.map((tech, index) => (
-            <div
+            <Badge
               key={index}
-              className="px-6 py-3 rounded-full bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
+              variant="outline"
+              className="px-6 py-3 text-sm font-medium bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
             >
-              <span className="text-sm font-medium">{tech}</span>
-            </div>
+              {tech}
+            </Badge>
           ))}
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <Separator className="my-16 max-w-4xl mx-auto" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="text-center space-y-2">
             <div className="text-4xl font-bold text-primary">10+</div>
             <div className="text-muted-foreground">Años de Experiencia</div>

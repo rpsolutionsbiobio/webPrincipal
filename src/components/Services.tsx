@@ -1,5 +1,6 @@
 import { Code, Smartphone, Cloud, Database, Shield, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 const services = [
   {
@@ -46,6 +47,8 @@ const Services = () => {
             Soluciones integrales de tecnología diseñadas para impulsar tu negocio
           </p>
         </div>
+
+        <Separator className="mb-16 max-w-3xl mx-auto" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (

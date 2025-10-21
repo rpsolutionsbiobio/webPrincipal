@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-tech.jpg";
 
@@ -13,14 +14,16 @@ const Hero = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/50" />
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
+      <AspectRatio ratio={16 / 9} className="absolute inset-0 opacity-20">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </AspectRatio>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 py-20">
